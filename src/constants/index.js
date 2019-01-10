@@ -20,4 +20,5 @@ export const usersActionTypes = {
 export const initialUsersState = {
     data: [],
     error: null,
+    loading: false,
 };

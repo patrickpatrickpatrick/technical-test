@@ -1,10 +1,9 @@
 import authReducer from './index';
 import { initialAuthState, authActionTypes } from './../../constants';
 
-const userCredsGenerator = date => ({
+const userCreds = {
     token: '123',
-    date,
-});
+};
 
 const actionCreator = (type, payload = {}) => ({
     type, 
@@ -17,16 +16,22 @@ const expireDate = new Date(currentDate.getTime() + 5*60000);
 describe('auth reducer', () => {
     it('logs in the user', () => {
         const result = authReducer(initialAuthState, actionCreator(
-            authActionTypes.loginUser,
-            userCredsGenerator(currentDate)
+            authActionTypes.loginSuccess,
+            userCreds,
         ));
-        expect(result.token).toEqual('123');
+        
+        expect(result.token).toEqual(userCreds.token);
         expect(result.expireDate.getMinutes() - expireDate.getMinutes()).toEqual(0);
     })
     it('logs out the user', () => {
-        expect(authReducer(initialAuthState, actionCreator(
+        const loggedInAuthState = {
+            ...initialAuthState,
+            token: userCreds.token
+        }
+
+        expect(authReducer(loggedInAuthState, actionCreator(
             authActionTypes.logoutUser,
-            userCredsGenerator(currentDate)
+            userCreds,
         ))).toEqual({
             token: null,
             expireDate: null,
