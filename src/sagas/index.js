@@ -17,6 +17,8 @@ function* fetchUsers() {
         usersErrorAction
     )
 
+    console.log(apiRequestOutcome)
+
     yield put(apiRequestOutcome);
 }
 

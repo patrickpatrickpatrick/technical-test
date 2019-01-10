@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import { userFetchAction } from './actions/users';
 
 class App extends Component {
+  
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+  
   render() {
+
+    console.log(this.props)
+
     return (
       <div className="App">
         <header className="App-header">
@@ -25,4 +35,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUsers: () => dispatch(userFetchAction)
+})
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

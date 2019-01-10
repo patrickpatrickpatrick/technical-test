@@ -3,5 +3,10 @@ export const apiRequest = (url, endpoint, config = {}, success, failure) =>
             ${url}${endpoint}
         `,
         config
-    ).then(response => success(response.json()))
-    .catch(error => failure(error.json()));
+    ).then(
+        response => response.json()
+    ).then(
+        response => success(response)
+    ).catch(
+        error => failure(error.json())
+    );

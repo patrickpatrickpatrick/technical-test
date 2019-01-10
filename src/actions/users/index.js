@@ -9,3 +9,7 @@ export const usersErrorAction = payload => ({
     type: usersActionTypes.errorUsers,
     payload
 });
+
+export const userFetchAction = {
+    type: usersActionTypes.getUsers,
+}
