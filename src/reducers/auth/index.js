@@ -2,7 +2,7 @@ import { initialAuthState, authActionTypes } from './../../constants';
 
 export default (state = initialAuthState, { type, payload }) => {
     switch (type) {
-        case authActionTypes.loginUser:
+        case authActionTypes.loginSuccess:
             const currentDate = new Date();
             return {
                 ...state,

@@ -8,4 +8,16 @@ export const authActionTypes = {
     loginError: 'LOGIN_ERROR',
     loginSuccess: 'LOGIN_SUCCESS',
     logoutUser: 'LOGOUT_USER', 
-}
+};
+
+export const usersActionTypes = {
+    getUsers: 'GET_USERS',
+    errorUsers: 'ERROR_USERS',
+    successUsers: 'SUCCESS_USERS',
+    clearUsers: 'CLEAR_USERS', 
+};
+
+export const initialUsersState = {
+    data: [],
+    error: null,
+};

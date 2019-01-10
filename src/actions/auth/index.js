@@ -1,6 +1,6 @@
-import { authActionTypes } from '../../constants/';
+import { usersActionTypes } from '../../constants/';
 
-export const LOGIN_SUCCESS = payload => ({
-    type: authActionTypes.loginSuccess,
+export const SUCCESS_USERS = payload => ({
+    type: usersActionTypes.successUsers,
     payload
 });
